@@ -1,30 +1,35 @@
-// First, apply the publishing plugin
 plugins {
-  id "org.example.greeting-publish" version "0.1.0"
-  id "java-gradle-plugin"
-  // Apply other plugins here, e.g. the kotlin plugin for a plugin written in Kotlin
-  // or the groovy plugin if the plugin uses Groovy
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.0'
 }
 
-// If your plugin has any external java dependencies, Gradle will attempt to
-// download them from JCenter for anyone using the plugins DSL
-// so you should probably use JCenter for dependency resolution in your own
-// project.
-repositories {
-  jcenter()
-}
 
-// Unless overridden in the pluginBundle config DSL, the project version will
-// be used as your plugin version when publishing
-version = "1.2"
-group = "org.example.greeting"
+group = 'org.samples.greeting'
+version = '0.1'
 
-// Use java-gradle-plugin to generate plugin descriptors and specify plugin ids
 gradlePlugin {
-  plugins {
-    greetingsPlugin {
-      id = 'org.samples.greeting'
-      implementationClass = 'org.example.greeting.GreetingPlugin'
+    plugins {
+        greetingsPlugin {
+            id = 'org.samples.greeting'
+            implementationClass = 'org.example.greeting.GreetingPlugin'
+        }
     }
-  }
 }
+
+pluginBundle {
+    website = 'http://www.gradle.org/'
+    vcsUrl = 'https://github.com/gradle-guides/greeting-plugin-example'
+    tags = ['example', 'template']
+}
+
+gradlePlugin {
+    plugins {
+        greetingsPlugin {
+            id = 'org.example.greeting'
+            displayName = 'Greeting Plugin'
+            description = 'Template for people to start their own plugin adventure'
+            implementationClass = 'org.example.greeting.GreetingPlugin'
+        }
+    }
+}
+
