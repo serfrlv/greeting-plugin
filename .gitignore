@@ -9,7 +9,6 @@ Thumbs.db
 *.sublime-*
 
 # Build Artifacts
-
 .gradle/
 build/
 target/
